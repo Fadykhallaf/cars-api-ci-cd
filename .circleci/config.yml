@@ -1,0 +1,18 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: openjdk:12-alpine
+    steps:
+      - checkout
+      - run: ./gradlew build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./build/libs/
+
+workflows:
+  Cars_CI_CD:
+    jobs:
+      - build
