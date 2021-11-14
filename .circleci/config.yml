@@ -16,9 +16,7 @@ jobs:
     steps:
       - checkout
       - run:
-        name: check the build
-        command: |
-          apk --no-cache add curl
+          apk --no-cache add curl 
           java -jar ./build/libs/cars-api.jar &
           sleep 30
           curl http://localhost:5000/actuator/health | grep "UP"
