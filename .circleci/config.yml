@@ -1,5 +1,4 @@
 version: 2
-
 jobs:
   build:
     docker:
@@ -12,7 +11,8 @@ jobs:
           paths:
             - ./build/libs/
 
-Cars_CI_CD:
-    workflows:
-      jobs:
-        - build
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
