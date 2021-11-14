@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:12-alpine
+      - image: openjdk:12-alpine
     steps:
       - checkout
       - run: ./gradlew build
