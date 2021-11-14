@@ -10,9 +10,21 @@ jobs:
           root: .
           paths:
             - ./build/libs/
+  smoke test:
+    docker:
+      - image: openjdk:12-alpine
+    steps:
+      - checkout
+      - command: |
+          apk --no-cache add curl
+          java -jar ./build/libs/cars-api.jar &
+          curl http://localhost:5000/actuator/health | grep "UP"
+
 
 workflows:
   version: 2
   workflow:
     jobs:
     - build
+    - smoke test:
+        requires: [build]
