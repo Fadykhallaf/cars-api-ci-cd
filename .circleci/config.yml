@@ -6,7 +6,6 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew build
-      - working_directory: .
       - store_artifacts:
           path: ./build/libs
   smoke test:
