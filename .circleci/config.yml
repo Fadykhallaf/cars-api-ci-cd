@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: openjdk:12-alpine
+      - image: circleci/openjdk:12-alpine
     steps:
       - checkout
       - run: ./gradlew build
@@ -12,7 +12,7 @@ jobs:
           paths:
             - ./build/libs/
 
-workflows:
-  Cars_CI_CD:
-    jobs:
-      - build
+Cars_CI_CD:
+    workflows:
+      jobs:
+        - build
